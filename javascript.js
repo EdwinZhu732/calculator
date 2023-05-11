@@ -37,15 +37,22 @@ let displayValue = "";
 const display = document.querySelector(".display");
 const numbers = document.querySelectorAll(".number");
 const equals = document.querySelector(".equals");
-const clear = document.querySelector(".AC");
+const clear = document.querySelector("#clear");
+
 numbers.forEach((num) => {
     num.addEventListener('click', () => {
         displayValue += num.textContent;
-        updateDisplay(displayValue);
-        console.log(num.textContent);
+        updateDisplay();
+        
     });
 });
 
-function updateDisplay(result){
-    display.textContent = result;
+clear.addEventListener('click', () => {
+    displayValue = "";
+    updateDisplay(displayValue);
+});
+
+
+function updateDisplay(){
+    display.textContent = displayValue;
 }
