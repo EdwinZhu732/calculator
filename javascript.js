@@ -1,5 +1,5 @@
 function add(a, b){
-    return a + b;
+    return Number(a) + Number(b);
 }
 
 function subtract(a, b){
@@ -36,22 +36,71 @@ let operator = "";
 let displayValue = "";
 const display = document.querySelector(".display");
 const numbers = document.querySelectorAll(".number");
-const equals = document.querySelector(".equals");
+const operators = document.querySelectorAll(".operator")
+const equals = document.querySelector("#equals");
 const clear = document.querySelector("#clear");
 
 numbers.forEach((num) => {
     num.addEventListener('click', () => {
-        displayValue += num.textContent;
-        updateDisplay();
-        
+        if (!operator){
+            num1 += num.textContent;
+            displayValue = num1;
+            updateDisplay();
+        }
+        else{
+            num2 += num.textContent;
+            displayValue = num2;
+            updateDisplay();
+        }
     });
 });
 
-clear.addEventListener('click', () => {
-    displayValue = "";
-    updateDisplay(displayValue);
+operators.forEach((op) => {
+    op.addEventListener('click', () => {
+        if (!operator){
+            operator = op.getAttribute('id');
+        }
+        else{
+            if (!num2){
+                operator = op.getAttribute('id');
+            }
+            else{
+                num1 = operate(operator, num1, num2);
+                displayValue = num1;
+                updateDisplay();
+                operator = op.getAttribute('id');
+                num2 = "";
+            }
+        }
+    });
 });
 
+equals.addEventListener('click', () => {
+    if (num1 && num2 && operator){
+        if (num2 == 0 && operator == "/"){
+            num1 = "";
+            num2 = "";
+            operator = "";
+            displayValue = "";
+            display.textContent = "ERROR";
+        }
+        else{
+            num1 = operate(operator, num1, num2);
+            displayValue = num1;
+            updateDisplay();
+            num2 = "";
+            operator = "";
+        }
+    }
+});
+
+clear.addEventListener('click', () => {
+    num1 = "";
+    num2 = "";
+    operator = "";
+    displayValue = "";
+    updateDisplay();
+});
 
 function updateDisplay(){
     display.textContent = displayValue;
