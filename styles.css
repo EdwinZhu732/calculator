@@ -15,13 +15,17 @@ body{
 }
 
 .display{
-    background-color: green;
-    margin: 12px;
+    background-color: rgb(74, 190, 74);
+    margin-top: 12px;
+    margin-bottom: 0px;
+    margin-left: 16px;
+    margin-right: 16px;
     padding: 32px;
     font-size: 32px;
     border-radius: 25px;
     font-family: sans-serif;
     text-align: right;
+    min-height: 36px;
 }
 
 .buttons{
@@ -29,17 +33,18 @@ body{
     flex-direction: column;
     margin: 12px;
     flex-wrap: wrap;
-    height: 400px
+    height: 400px;
 }
 
 .row{
     display: flex;
     justify-content: space-around;
+    margin-top: 2px;
     
 }
 button{
     border-radius: 8px;
     height: 72px;
     width: 72px;
-    font-size: 16px;
+    font-size: 24px;
 }

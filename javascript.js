@@ -1,8 +1,3 @@
-let num1;
-let num2;
-let operator;
-let displayValue;
-
 function add(a, b){
     return a + b;
 }
@@ -33,4 +28,24 @@ function operate (operator, num1, num2){
     else if (operator == "/"){
         return divide(num1, num2);
     }
+}
+
+let num1 = "";
+let num2 = "";
+let operator = "";
+let displayValue = "";
+const display = document.querySelector(".display");
+const numbers = document.querySelectorAll(".number");
+const equals = document.querySelector(".equals");
+const clear = document.querySelector(".AC");
+numbers.forEach((num) => {
+    num.addEventListener('click', () => {
+        displayValue += num.textContent;
+        updateDisplay(displayValue);
+        console.log(num.textContent);
+    });
+});
+
+function updateDisplay(result){
+    display.textContent = result;
 }
