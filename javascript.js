@@ -30,6 +30,10 @@ function operate (operator, num1, num2){
     }
 }
 
+function updateDisplay(){
+    display.textContent = displayValue;
+}
+
 let num1 = "";
 let num2 = "";
 let operator = "";
@@ -39,6 +43,7 @@ const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator")
 const equals = document.querySelector("#equals");
 const clear = document.querySelector("#clear");
+const positive = document.querySelector('#positive');
 
 numbers.forEach((num) => {
     num.addEventListener('click', () => {
@@ -102,6 +107,15 @@ clear.addEventListener('click', () => {
     updateDisplay();
 });
 
-function updateDisplay(){
-    display.textContent = displayValue;
-}
+positive.addEventListener('click', () => {
+    if (!operator){
+        num1 = num1 * -1;
+        displayValue = num1;
+        updateDisplay();
+    }
+    else{
+        num2 = num2 * -1;
+        displayValue = num2;
+        updateDisplay();
+    }
+});
