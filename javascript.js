@@ -1,22 +1,61 @@
 function add(a, b){
-    return "" + (Number(a) + Number(b));
+    let r = "" + (Number(a) + Number(b)).toFixed(5);
+    while (r.charAt(r.length - 1) == 0 && r.charAt(r.length - 1) != '.' ){
+        r = r.slice(0, -1);
+    }
+    if (r.charAt(r.length - 1) == '.'){
+        r = r.slice(0, -1);
+        return r;
+    }
+    return r;
 }
 
 function subtract(a, b){
-    return "" + (Number(a) - Number(b))
+    let r = "" + (Number(a) - Number(b)).toFixed(5);
+    while (r.charAt(r.length - 1) == 0 && r.charAt(r.length - 1) != '.' ){
+        r = r.slice(0, -1);
+    }
+    if (r.charAt(r.length - 1) == '.'){
+        r = r.slice(0, -1);
+        return r;
+    }
+    return r;
 }
 
 function multiply(a, b){
-    return "" + (Number(a) * Number(b))
+    let r = "" + (Number(a) * Number(b)).toFixed(5);
+    while (r.charAt(r.length - 1) == 0 && r.charAt(r.length - 1) != '.' ){
+        r = r.slice(0, -1);
+    }
+    if (r.charAt(r.length - 1) == '.'){
+        r = r.slice(0, -1);
+        return r;
+    }
+    return r;
 }
 
 function divide(a, b){
-    return "" + (Number(a) / Number(b))
-    //Need to add divide by zero case
+    let r = "" + (Number(a) / Number(b)).toFixed(5);
+    while (r.charAt(r.length - 1) == 0 && r.charAt(r.length - 1) != '.' ){
+        r = r.slice(0, -1);
+    }
+    if (r.charAt(r.length - 1) == '.'){
+        r = r.slice(0, -1);
+        return r;
+    }
+    return r;
 }
 
 function remainder(a, b){
-    return "" + (Number(a) % Number(b))
+    let r = "" + (Number(a) % Number(b)).toFixed(5);
+    while (r.charAt(r.length - 1) == 0 && r.charAt(r.length - 1) != '.' ){
+        r = r.slice(0, -1);
+    }
+    if (r.charAt(r.length - 1) == '.'){
+        r = r.slice(0, -1);
+        return r;
+    }
+    return r;
 }
 
 function operate (operator, num1, num2){
