@@ -36,6 +36,19 @@ body{
     height: 400px;
 }
 
+.operator{
+    color: rgb(26, 182, 26);
+}
+
+#clear{
+    color:red;
+}
+
+#equals{
+    background-color: green;
+    color:white;
+}
+
 .row{
     display: flex;
     justify-content: space-around;

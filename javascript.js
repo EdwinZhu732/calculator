@@ -1,22 +1,22 @@
 function add(a, b){
-    return Number(a) + Number(b);
+    return "" + (Number(a) + Number(b));
 }
 
 function subtract(a, b){
-    return a - b;
+    return "" + (Number(a) - Number(b))
 }
 
 function multiply(a, b){
-    return a * b;
+    return "" + (Number(a) * Number(b))
 }
 
 function divide(a, b){
-    return a / b;
+    return "" + (Number(a) / Number(b))
     //Need to add divide by zero case
 }
 
 function remainder(a, b){
-    return a % b;
+    return "" + (Number(a) % Number(b))
 }
 
 function operate (operator, num1, num2){
@@ -51,6 +51,8 @@ const operators = document.querySelectorAll(".operator")
 const equals = document.querySelector("#equals");
 const clear = document.querySelector("#clear");
 const positive = document.querySelector('#positive');
+const undo = document.querySelector('#Undo');
+const decimal = document.querySelector('#decimal');
 
 numbers.forEach((num) => {
     num.addEventListener('click', () => {
@@ -97,9 +99,6 @@ equals.addEventListener('click', () => {
             display.textContent = "ERROR";
         }
         else{
-            console.log(num1);
-            console.log(operator);
-            console.log(num2);
             num1 = operate(operator, num1, num2);
             displayValue = num1;
             updateDisplay();
@@ -125,6 +124,20 @@ positive.addEventListener('click', () => {
     }
     else{
         num2 = num2 * -1;
+        displayValue = num2;
+        updateDisplay();
+    }
+});
+
+undo.addEventListener('click', () =>{
+    if (!operator && num1){
+        console.log(num1);
+        num1 = num1.slice(0, -1);
+        displayValue = num1;
+        updateDisplay();
+    }
+    else if (operator && num2){
+        num2 = num2.slice(0, -1);
         displayValue = num2;
         updateDisplay();
     }
