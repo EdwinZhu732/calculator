@@ -79,11 +79,17 @@ operators.forEach((op) => {
                 operator = op.getAttribute('id');
             }
             else{
-                num1 = operate(operator, num1, num2);
-                displayValue = num1;
-                updateDisplay();
-                operator = op.getAttribute('id');
-                num2 = "";
+                if (num2 == 0 && operator == "/"){
+                    clearAll();
+                    display.textContent = "ERROR";
+                }
+                else{
+                    num1 = operate(operator, num1, num2);
+                    displayValue = num1;
+                    updateDisplay();
+                    operator = op.getAttribute('id');
+                    num2 = "";
+                }
             }
         }
     });
@@ -92,10 +98,7 @@ operators.forEach((op) => {
 equals.addEventListener('click', () => {
     if (num1 && num2 && operator){
         if (num2 == 0 && operator == "/"){
-            num1 = "";
-            num2 = "";
-            operator = "";
-            displayValue = "";
+            clearAll();
             display.textContent = "ERROR";
         }
         else{
@@ -108,13 +111,15 @@ equals.addEventListener('click', () => {
     }
 });
 
-clear.addEventListener('click', () => {
+clear.addEventListener('click', clearAll);
+
+function clearAll(){
     num1 = "";
     num2 = "";
     operator = "";
     displayValue = "";
     updateDisplay();
-});
+}
 
 positive.addEventListener('click', () => {
     if (!operator){
