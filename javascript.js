@@ -148,15 +148,32 @@ undo.addEventListener('click', () =>{
 });
 
 decimal.addEventListener('click', () => {
-    if (!operator && num1 && num1.indexOf(".") == -1){
-        
-        num1 += ".";
-        displayValue = num1;
-        updateDisplay();
+    if (!operator){
+        if (!num1){
+            num1+= "0.";
+            displayValue = num1;
+            updateDisplay();
+        }
+        else{
+            if (num1.indexOf(".") == -1){
+                num1 += ".";
+                displayValue = num1;
+                updateDisplay();
+            }
+        }
     }
-    else if (operator && num2 && num2.indexOf(".") == -1){
-        num2 += ".";
-        displayValue = num2;
-        updateDisplay();
+    else{
+        if (!num2){
+            num2 += "0.";
+            displayValue = num2;
+            updateDisplay();
+        }
+        else{
+            if (num2.indexOf(".") == -1){
+                num2 += ".";
+                displayValue = num2;
+                updateDisplay();
+            }
+        }
     }
 });
