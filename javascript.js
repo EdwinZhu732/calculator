@@ -131,13 +131,26 @@ positive.addEventListener('click', () => {
 
 undo.addEventListener('click', () =>{
     if (!operator && num1){
-        console.log(num1);
         num1 = num1.slice(0, -1);
         displayValue = num1;
         updateDisplay();
     }
     else if (operator && num2){
         num2 = num2.slice(0, -1);
+        displayValue = num2;
+        updateDisplay();
+    }
+});
+
+decimal.addEventListener('click', () => {
+    if (!operator && num1 && num1.indexOf(".") == -1){
+        
+        num1 += ".";
+        displayValue = num1;
+        updateDisplay();
+    }
+    else if (operator && num2 && num2.indexOf(".") == -1){
+        num2 += ".";
         displayValue = num2;
         updateDisplay();
     }
