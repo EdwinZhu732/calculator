@@ -15,6 +15,10 @@ function divide(a, b){
     //Need to add divide by zero case
 }
 
+function remainder(a, b){
+    return a % b;
+}
+
 function operate (operator, num1, num2){
     if (operator == "+"){
         return add(num1, num2);
@@ -27,6 +31,9 @@ function operate (operator, num1, num2){
     }
     else if (operator == "/"){
         return divide(num1, num2);
+    }
+    else if (operator == "%"){
+        return remainder(num1, num2);
     }
 }
 
@@ -90,6 +97,9 @@ equals.addEventListener('click', () => {
             display.textContent = "ERROR";
         }
         else{
+            console.log(num1);
+            console.log(operator);
+            console.log(num2);
             num1 = operate(operator, num1, num2);
             displayValue = num1;
             updateDisplay();
